@@ -1,0 +1,821 @@
+$marginBottom: 6.25vw;
+$marginLeft: 17.71vw;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Work Sans", sans-serif;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: #000000;
+}
+
+.header {
+    padding: 0.81vw;
+    margin-bottom: $marginBottom;
+    font-size: 0.83vw;
+
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4.69vw;
+        list-style-type: none;
+    }
+
+    &__logo {
+        display: block;
+        width: 10vw;
+        height: 2.24vw;
+        background-image: url("/assets/images/header/logo.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    &__phone {
+        display: flex;
+        flex-direction: column;
+        gap: 0.26vw;
+
+        &-number {
+            font-weight: 600;
+        }
+
+        &-text {
+            font-size: 0.68vw;
+        }
+    }
+
+    &__language {
+        border: 0 solid #fff;
+        background-color: #fff;
+        font-size: 0.68vw;
+    }
+}
+
+.nav {
+    &__list {
+        display: flex;
+        gap: 2.24vw;
+        list-style-type: none;
+    }
+}
+
+.hero {
+    display: flex;
+    gap: 4.17vw;
+    align-items: center;
+    margin-left: $marginLeft;
+    margin-bottom: $marginBottom;
+
+    &__title {
+        font-size: 2.08vw;
+        font-weight: 500;
+        margin-bottom: 2.5vw;
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.04vw;
+        width: 38.33vw;
+        height: 18.33vw;
+    }
+
+    &__card {
+        -webkit-box-shadow: 0vw 0vw 1.25vw 0vw rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 0vw 0vw 1.25vw 0vw rgba(0, 0, 0, 0.1);
+        box-shadow: 0vw 0vw 1.25vw 0vw rgba(0, 0, 0, 0.1);
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 60%;
+        width: 100%;
+        padding: auto;
+
+        &--posta {
+            background-size: 30%;
+        }
+    }
+
+    @for $i from 1 through 9 {
+        &__card:nth-child(#{$i}) {
+            background-image: url("/assets/images/hero/logo_#{$i}.png");
+        }
+    }
+
+    &__image {
+        width: 34.38vw;
+        height: 29.84vw;
+        background-image: url("/assets/images/hero/hero__box.png");
+        background-size: cover;
+    }
+}
+
+.contact-form {
+    height: auto;
+    width: 100%;
+    background-image: url("/assets/images/form/form__background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: $marginLeft;
+    padding-top: 1.82vw;
+    padding-bottom: 1.82vw;
+    margin-bottom: $marginBottom/2;
+
+    &__container {
+        width: 37.5vw;
+        height: auto;
+        padding: 2.08vw;
+        background-color: rgba(52, 52, 52, 0.8);
+        border-radius: 0.26vw;
+    }
+
+    &__title {
+        font-size: 1.67vw;
+        color: #fff;
+        margin-bottom: 0.52vw;
+    }
+
+    &__text {
+        font-weight: 300;
+        font-size: 0.83vw;
+        color: #fff;
+        margin-bottom: 2.5vw;
+    }
+
+    &__input {
+        background: transparent;
+        border: none;
+        border-bottom: 0.05vw solid #ffffff;
+        padding: 0.42vw 0;
+        font-size: 0.83vw;
+        color: #fff;
+        width: 100%;
+        margin-top: 1vw;
+    }
+
+    &__phoneSelect {
+        @extend .contact-form__input;
+        width: 4vw;
+        color: #fff;
+        background-color: transparent;
+
+        option {
+            background-color: #343434;
+            color: #fff;
+        }
+    }
+
+    &__maritalStatus {
+        @extend .contact-form__input;
+        color: #fff;
+        background-color: transparent;
+
+        option {
+            background-color: #343434;
+            color: #fff;
+        }
+    }
+
+    &__submit {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__agreement {
+        display: flex;
+    }
+
+    &__checkbox {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked+.contact-form__label::before {
+            content: "+";
+            background: transparent;
+            border: 0.05vw solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7vw;
+        }
+    }
+
+    &__errors {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__label {
+        color: #fff;
+        font-size: 0.68vw;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 0.83vw;
+            height: 0.83vw;
+            border: 0.05vw solid #fff;
+            background: transparent;
+            border-radius: 0.1vw;
+            transition: all 0.3s;
+            margin-right: 0.42vw;
+        }
+    }
+
+    &__name {
+        display: flex;
+        gap: 1.04vw;
+
+        :nth-child(n) {
+            width: 10.4vw;
+        }
+    }
+
+    &__phone {
+        display: flex;
+        gap: 1.04vw;
+    }
+
+    &__textarea {
+        @extend .contact-form__input;
+        resize: vertical;
+        height: auto;
+        overflow: auto;
+        margin-bottom: 1.56vw;
+        min-height: calc(1.5em * 2);
+        max-height: calc(1.5em * 7);
+        line-height: 1.5em;
+    }
+
+    &__button {
+        background-color: #78599C;
+        width: 10.42vw;
+        height: 2.5vw;
+        border-radius: 0.21vw;
+        color: #fff;
+        border: 0;
+        font-size: 0.83vw;
+    }
+}
+
+::placeholder {
+    color: #fff;
+    opacity: 1;
+}
+
+.footer {
+    font-size: 0.83vw;
+
+    &__container {
+        display: flex;
+        gap: 2.5vw;
+        padding-left: $marginLeft;
+
+    }
+
+    &__contacts {
+        list-style-type: none;
+        width: 13.91vw;
+    }
+
+    &__logo {
+        @extend .header__logo;
+        width: 11.51vw;
+        height: 2.6vw;
+        margin-bottom: 3.13vw;
+    }
+
+    &__call {
+        display: flex;
+        flex-direction: column;
+        gap: 0.83vw;
+        margin-bottom: 1.25vw;
+    }
+
+    &__phone {
+        &-wrapper {
+            display: flex;
+            gap: 0.63vw;
+            align-items: center;
+        }
+
+        &-text {
+            color: #78599C;
+            text-decoration: underline;
+        }
+    }
+
+    &__email {
+        &-wrapper {
+            @extend .footer__phone-wrapper;
+            margin-bottom: 1.25vw;
+        }
+    }
+
+    &__location {
+        &-wrapper {
+            @extend .footer__phone-wrapper;
+            margin-bottom: 1.25vw;
+        }
+    }
+
+    &__icon {
+        width: 1.25vw;
+        height: 1.25vw;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        &-phone {
+            background-image: url("/assets/svg/phone.svg");
+        }
+
+        &-email {
+            background-image: url("/assets/svg/email.svg");
+        }
+
+        &-location {
+            background-image: url("/assets/svg/location.svg");
+        }
+
+        &-arrow {
+            background-image: url("/assets/svg/arrow.svg");
+        }
+
+        &-logo {
+            width: 1.51vw;
+            height: 1.56vw;
+            background-size: cover;
+
+            background-image: url("/assets/images/footer/footer_logo.png");
+        }
+    }
+
+    &__services {
+        display: flex;
+        flex-direction: column;
+        gap: 0.83vw;
+        width: 14.69vw;
+        line-height: 130%;
+
+        &-item {
+            list-style-type: none;
+
+            &:first-child {
+                font-weight: 700;
+                margin-bottom: 0.83vw;
+            }
+
+            &:last-child {
+                margin-top: 0.83vw;
+            }
+        }
+    }
+
+    &__link-see {
+        display: flex;
+        gap: 0.78vw;
+        color: #78599C;
+    }
+
+    &__text {
+        color: #78599C;
+
+    }
+
+    &__navigation {
+        display: flex;
+        flex-direction: column;
+        gap: 0.83vw;
+        list-style-type: none;
+        font-weight: 700;
+        width: 14.69vw;
+    }
+
+    &__data {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        gap: 0.83vw;
+
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            text-decoration: none;
+            color: #BCBCBC;
+        }
+    }
+
+    &__politics {
+        width: 100vw;
+        padding: 1.25vw $marginLeft;
+        display: flex;
+        margin-top: 2.92vw;
+        justify-content: space-between;
+        align-items: center;
+
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            text-decoration: underline;
+            color: #000000;
+        }
+    }
+
+    &__about {
+        display: flex;
+        align-items: center;
+        gap: 0.83vw;
+    }
+}
+
+input[type="submit"][disabled] {
+    cursor: not-allowed;
+    background-color: #92899c;
+}
+
+.error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: #ff4d4d;
+    font-size: 0.57vw;
+    line-height: 0.63vw;
+    margin-top: 0.1vw;
+    z-index: 10;
+    white-space: nowrap;
+    display: none;
+}
+
+.error_input {
+    border-bottom: 0.05vw solid red;
+}
+
+.contact-name__errors {
+    position: relative;
+    width: 100%;
+}
+
+
+@media (max-width: 1024px) {
+    $marginBottomTablet: 2vw;
+    $marginLeftTablet: 5vw;
+
+    .header {
+        padding: 1.5vw;
+        margin-bottom: $marginBottomTablet;
+        font-size: 1.2vw;
+
+        &__list {
+            gap: 3vw;
+        }
+
+        &__logo {
+            width: 15vw;
+            height: 3.4vw;
+        }
+
+        &__phone {
+            &-text {
+                font-size: 1vw;
+            }
+
+            &-number {
+                font-size: 1.1vw;
+            }
+        }
+
+        &__language {
+            font-size: 1vw;
+        }
+    }
+
+    .hero {
+        flex-direction: column;
+        margin-left: $marginLeftTablet;
+        margin-bottom: $marginBottomTablet;
+
+        &__title {
+            font-size: 3vw;
+            margin-bottom: 4vw;
+            text-align: center;
+        }
+
+        &__cards {
+            height: auto;
+            margin: 0 auto;
+        }
+
+        &__card {
+            background-size: 70%;
+            aspect-ratio: 2 / 1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 1vw;
+
+            &--posta {
+                background-size: 40%;
+            }
+        }
+
+        &__image {
+            width: 80%;
+            height: auto;
+            margin: 2vw auto 0;
+        }
+    }
+
+    .contact-form {
+        padding-left: $marginLeftTablet;
+        padding-right: $marginLeftTablet;
+        padding-top: 3vw;
+        padding-bottom: 3vw;
+
+        &__name {
+            :nth-child(n) {
+                width: 18.3vw;
+            }
+        }
+
+        &__container {
+            width: 70%;
+            margin: 0 auto;
+            padding: 3vw;
+        }
+
+        &__title {
+            font-size: 2vw;
+            text-align: center;
+        }
+
+        &__text {
+            font-size: 1.4vw;
+            text-align: center;
+        }
+
+        &__input,
+        &__phoneSelect,
+        &__maritalStatus,
+        &__textarea {
+            font-size: 1vw;
+        }
+
+        &__phoneSelect {
+            width: 6vw;
+        }
+
+        &__button {
+            height: auto;
+            font-size: 1vw;
+            padding: 2vw;
+        }
+    }
+
+    .footer {
+        font-size: 1.2vw;
+
+        &__container {
+            gap: 3vw;
+            padding-left: $marginLeftTablet*2;
+        }
+
+        &__logo {
+            width: 35vw;
+            height: auto;
+        }
+
+        &__services,
+        &__navigation,
+        &__data {
+            width: 100%;
+            gap: 2vw;
+        }
+
+        &__services {
+            width: 41.67vw;
+        }
+
+        &__navigation {
+            width: 15.63vw;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    $marginBottomMobile: 3vw;
+    $marginLeftMobile: 3vw;
+
+    .header__list {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 4%;
+        background-color: #fff;
+        width: 40vw;
+        padding: 2vw;
+        gap: 2vw;
+        z-index: 100;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        align-items: start;
+    }
+
+    .nav__list {
+        flex-direction: column;
+    }
+
+    .header__list.active {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header__burger {
+        display: block;
+        width: 6vw;
+        height: 6vw;
+        background-image: url("/assets/svg/burger.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 2vw;
+        left: 3vw;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .header {
+        padding: 2vw;
+        margin-bottom: $marginBottomMobile;
+        font-size: 3vw;
+
+        &__list {
+            display: none;
+        }
+
+        &__logo {
+            width: 40vw;
+            height: auto;
+        }
+
+        &__phone {
+            &-text {
+                font-size: 2.5vw;
+            }
+
+            &-number {
+                font-size: 2.8vw;
+            }
+        }
+
+        &__language {
+            font-size: 2.5vw;
+        }
+
+
+    }
+
+    .hero {
+        flex-direction: column;
+        margin-left: $marginLeftMobile;
+        margin-bottom: $marginBottomMobile;
+
+        &__title {
+            font-size: 4vw;
+            margin-bottom: 6vw;
+            text-align: center;
+        }
+
+        &__cards {
+            height: auto;
+            width: 66vw;
+            gap: 4vw;
+            margin: 0 auto;
+        }
+
+        &__card {
+            background-size: 80%;
+            aspect-ratio: 2 / 1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 3vw;
+
+            &--posta {
+                background-size: 50%;
+            }
+        }
+
+        &__image {
+            width: 90%;
+            height: auto;
+            margin: 3vw auto 0;
+        }
+    }
+
+    .contact-form {
+        padding-left: $marginLeftMobile;
+        padding-right: $marginLeftMobile;
+        padding-top: 4vw;
+        padding-bottom: 4vw;
+
+        &__container {
+            width: 70%;
+            margin: 0 auto;
+            padding: 4vw;
+        }
+
+        &__title {
+            font-size: 3vw;
+            text-align: center;
+        }
+
+        &__text {
+            font-size: 2vw;
+            text-align: center;
+        }
+
+        &__input,
+        &__phoneSelect,
+        &__maritalStatus,
+        &__textarea {
+            font-size: 2vw;
+        }
+
+        &__phoneSelect {
+            width: 20vw;
+        }
+
+        &__name {
+            :nth-child(n) {
+                width: 18.6vw;
+            }
+        }
+
+        &__submit {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &__label {
+            font-size: 2vw;
+        }
+
+        &__button {
+            width: 40%;
+            height: 7vw;
+            font-size: 2vw;
+            padding: auto;
+            margin: 2vw auto 0;
+            display: block;
+        }
+    }
+
+    .footer {
+        font-size: 3vw;
+
+        &__container {
+            flex-direction: column;
+            gap: 4vw;
+            padding-left: $marginLeftMobile*2;
+        }
+
+        &__logo {
+            width: 60vw;
+            height: auto;
+        }
+
+        &__services,
+        &__navigation,
+        &__data {
+            width: 100%;
+            gap: 3vw;
+        }
+
+        &__services {
+            width: 90%;
+        }
+
+        &__navigation {
+            width: 90%;
+        }
+        &__politics {
+            padding: 6vw;
+        }
+    }
+}
